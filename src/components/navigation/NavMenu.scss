@@ -1,0 +1,22 @@
+.nav {
+  &-cont {
+    background-color: #f8f8f8;
+    border-right: 1px solid #e7e7e7;
+    height: 100%;
+    padding: 15px 0;
+    position: absolute;
+    top: 52px;
+    width: 250px;
+  }
+  &-list {
+    a {
+      color: #101010;
+      display: block;
+      padding: 5px 20px;
+      width: 100%;
+      &.active {
+        background-color: #e7e7e7;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.Dashboard {
+  margin-top: 10%;
+}
+.btn {
+  &-import {
+    cursor: pointer;
+    margin-top: 25px;
+    padding: 25px;
+    text-align: center;
+
+    &:hover {
+      background-color: #f8f8f8;
+    }
+
+    .glyphicon {
+      font-size: 52px;
+    }
+  }
+}
+
+.center-aligh {
+  text-align: center;
+}
