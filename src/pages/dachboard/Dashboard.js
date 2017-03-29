@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react';
-import { connect } from 'react-redux';
-import { bindAll } from 'lodash';
+import {connect} from 'react-redux';
 
-import { openModal } from '../../components/modal/index';
-import ImportModal from './ImportModal';
+import { LS } from '../../utils/index';
+import BtnImport from './components/BtnImport';
+import RssLenta from './components/RssLenta';
 import './Dashboard.scss';
 
 class Dashboard extends Component {
@@ -13,31 +13,17 @@ class Dashboard extends Component {
 
     constructor(props) {
         super(props);
-
-        bindAll(this, ['btnImportClicked']);
-    }
-
-    btnImportClicked() {
-        this.props.dispatch(openModal({
-            content: <ImportModal />,
-            title: 'Import'
-        }));
     }
 
     render() {
+        const arrayRss = LS.get('arrayRss');
+        console.log('Dashboard props', arrayRss);
+
         return(
             <div className="Dashboard">
                 <div className="row">
-                    <div className="col-sx-12 center-aligh">
-                        <h3>START WITH ONE OF THESE:</h3>
-                    </div>
-                    <div className="col-sx-12">
-                        <div className="btn-import" onClick={this.btnImportClicked}>
-                            <span className="glyphicon glyphicon-download-alt"/>
-                            <h3>IMPORT YOUR SUBSCRIPTIONS</h3>
-                            <h6>If you are coming from another reader</h6>
-                        </div>
-                    </div>
+                    { !arrayRss ? <BtnImport /> : <RssLenta arrayRss={ arrayRss } /> }
+
                 </div>
             </div>
         );
@@ -45,7 +31,9 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}; // Мы не будим подписываться на поле
+    return {
+        dashboard: state.dashboard
+    };
 }
 
 export default connect(mapStateToProps)(Dashboard);

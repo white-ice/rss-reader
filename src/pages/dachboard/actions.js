@@ -2,6 +2,8 @@ import { LS, delay } from '../../utils/index';
 
 export const ADD_RSS = 'ADD_RSS';
 export const GET_RSS = 'GET_RSS';
+export const DELETE_RSS = 'DELETE_RSS';
+export const GET_RSS_DATA = 'GET_RSS_DATA';
 
 export function addRss(arrayRss, inputText) {
     let id = 1;
@@ -15,15 +17,32 @@ export function addRss(arrayRss, inputText) {
     };
 }
 
-export function getTodos() {
-    const arrayRss = LS.get('arrayRss');
+export function deleteRss(delrssItem) {
+    return {
+        type: DELETE_RSS,
+        delrssItem
+    };
+}
 
-    console.log('LS rss', arrayRss);
+export function getRssLS() {
+    const arrayRss = LS.get('arrayRss');
 
     return (dispatch) => {
         delay(2000).then(() => {
             dispatch({
                 type: GET_RSS,
+                arrayRss
+            });
+        });
+    };
+}
+
+export function getRssData(arrayRss) {
+
+    return (dispatch) => {
+        delay(2000).then(() => {
+            dispatch({
+                type: GET_RSS_DATA,
                 arrayRss
             });
         });

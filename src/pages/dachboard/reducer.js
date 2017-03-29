@@ -1,4 +1,4 @@
-import {ADD_RSS, GET_RSS} from './actions';
+import {ADD_RSS, GET_RSS, DELETE_RSS} from './actions';
 
 const initialState = {
     arrayRss: []
@@ -17,6 +17,10 @@ function rssReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 arrayRss: action.arrayRss
             });
+        case DELETE_RSS:
+            const filteredArrayRss = arrayRss.filter(rss => rss.id !== action.delrssItem.id);
+
+            return Object.assign({}, state, { arrayRss: filteredArrayRss });
         default:
             return state;
     }

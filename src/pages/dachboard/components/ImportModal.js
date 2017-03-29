@@ -1,10 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {bindAll} from 'lodash';
 import {connect} from 'react-redux';
-import { LS } from '../../utils/index';
-import {closeModal} from '../../components/modal/index';
-import Input from '../../components/ui/input/Input';
-import {addRss, getTodos} from './actions';
+import { LS } from '../../../utils/index';
+import {closeModal} from '../../../components/modal/index';
+import Input from '../../../components/ui/input/Input';
+import {addRss, getRssLS, deleteRss} from '../actions';
+import '../Dashboard.scss';
 
 class ImportModal extends Component {
     static propTypes = {
@@ -19,9 +20,9 @@ class ImportModal extends Component {
             inputText: ''
         };
 
-        bindAll(this, ['close', 'inputOnChenge', 'addRssUrl', 'renderRssList']);
+        bindAll(this, ['close', 'inputOnChenge', 'addRssUrl', 'renderRssList', 'deleteRssItem', 'save']);
 
-        this.props.dispatch( getTodos() );
+        this.props.dispatch( getRssLS() );
     }
 
     close() {
@@ -38,10 +39,21 @@ class ImportModal extends Component {
         this.setState({ inputText: '' });
     }
 
+    deleteRssItem(delrssItem) {
+        this.props.dispatch(deleteRss(delrssItem));
+    }
+
+    save() {
+        const { arrayRss } = this.props.rss;
+
+        LS.set('arrayRss', arrayRss);
+    }
+
     renderRssList(item, idx) {
         return (
-            <li key={idx}>
+            <li key={idx} className="rss-item">
                 <span>{item.rssUrl}</span>
+                <button className="btn btn-primary btn-xs right" onClick={this.deleteRssItem.bind('', item)}><i className="glyphicon glyphicon-remove"/></button>
             </li>
         );
     }
