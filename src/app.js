@@ -21,7 +21,7 @@ export default class App extends Component {
                     <Modal />
                     <div className="container">
                         { this.props.children }
-                        { process.env.NODE_ENV !== 'production' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null }
+                        { NODE_ENV !== 'production' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null }
                     </div>
                 </div>
             </div>

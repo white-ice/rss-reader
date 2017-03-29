@@ -1,6 +1,4 @@
-import Modal from './Modal';
-export {Modal as modal};
-import ModalReducer from './reducer';
-export {ModalReducer as modalReducer};
+export Modal from './Modal';
+export ModalReducer from './reducer';
 
 export { openModal, closeModal } from './actions';

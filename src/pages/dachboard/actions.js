@@ -39,12 +39,8 @@ export function getRssLS() {
 
 export function getRssData(arrayRss) {
 
-    return (dispatch) => {
-        delay(2000).then(() => {
-            dispatch({
-                type: GET_RSS_DATA,
-                arrayRss
-            });
-        });
+    return {
+        type: GET_RSS_DATA,
+        arrayRss
     };
 }

@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindAll} from 'lodash';
 
-import load from '../../../utils/load';
 import {getRssData} from '../actions';
 import '../Dashboard.scss';
 
@@ -23,18 +22,10 @@ class RssLenta extends Component {
     loadData() {
         const { arrayRss } = this.props;
 
-        arrayRss.map((item) => {
-            load(item.rssUrl).then(rssData => {
-                this.initialData = JSON.parse(rssData);
-                console.log(this.initialData);
-                this.props.dispatch( getRssData(this.initialData) );
-            });
-        });
-
+        this.props.dispatch(getRssData(arrayRss));
     }
 
     render() {
-        console.log('Rss Lenta', this.props)
         return (
             <div className="RssLenta">
                 <h2>Rss Lenta</h2>
