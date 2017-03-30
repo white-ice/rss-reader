@@ -4,13 +4,14 @@ import App from './app';
 
 import Dashboard from 'pages/dachboard/Dashboard';
 import DashboardRouter from 'pages/dachboard/router';
+import ErrorPage from 'pages/error/Error';
 
 export default (
-    <Route component={ App } path={ App.path }>
+    <Route path="/" component={ App } >
         <IndexRoute component={ Dashboard }/>
 
         { DashboardRouter }
 
-        {/*<Route path="*" component={ ErrorPage }/>*/}
+        <Route path="*" component={ ErrorPage }/>
     </Route>
 );

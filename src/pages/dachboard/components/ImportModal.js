@@ -8,11 +8,6 @@ import {addRss, getRssLS, deleteRss} from '../actions';
 import '../Dashboard.scss';
 
 class ImportModal extends Component {
-    static propTypes = {
-        rss: PropTypes.object.isRequired,
-        dispatch: PropTypes.func.isRequired
-    };
-
     constructor(props) {
         super(props);
 
@@ -74,13 +69,17 @@ class ImportModal extends Component {
                     <button className="btn btn-primary" onClick={this.addRssUrl}>Add RSS URL</button>
                 </div>
                 <div className="modal-footer">
-                    {/*<button type="button" className="btn btn-default" onClick={ this.close }>Закрыть</button>*/}
                     <button type="button" className="btn btn-success" onClick={ this.save }>Сохранить</button>
                 </div>
             </div>
         );
     }
 }
+
+ImportModal.propTypes = {
+    rss: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
     return {

@@ -1,32 +1,24 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
-
 module.exports = {
-    entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/dev-server',
-        './src/index.js'
-    ],
+    entry: ['./src/index.js'],
     output: {
-        publicPath: 'http://localhost:3000/',
         path: __dirname + '/public',
         filename: 'bundle.js'
     },
-    watch: NODE_ENV == 'development',
-    watchOptions: {
-        aggregateTimeout: 100
-    },
-    devtool: NODE_ENV == 'development' ? 'cheap-inline-module-source-map' : null,
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('bundle.css'),
         new webpack.DefinePlugin({
-            NODE_ENV: JSON.stringify(NODE_ENV)
+            NODE_ENV: JSON.stringify('production')
         }),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings:       false,
+                drop_console:   true,
+                unsafe:         true
+            }
+        })
     ],
     resolve: {
         modulesDirectories: ['node_modules', 'bower_components'],
@@ -38,15 +30,6 @@ module.exports = {
         modulesDirectories: ['node_modules', 'bower_components'],
         moduleTemplates: ['*-loader', '*'],
         extensions: ['', '.js']
-    },
-    devServer: {
-        host: 'localhost',
-        port: 3000,
-        contentBase: __dirname + '/public',
-
-        inline: true,
-        hot: true,
-        historyApiFallback: true
     },
     module: {
         loaders: [
@@ -65,6 +48,13 @@ module.exports = {
                 '!css?sourceMap' +
                 '!autoprefixer-loader?browsers=last 2 version' +
                 '!sass?sourceMap'
+            },
+            {
+                test: /\.less$/,
+                loader: 'style' +
+                '!css?sourceMap' +
+                '!autoprefixer-loader?browsers=last 2 version' +
+                '!less?sourceMap=source-map-less-inline'
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
@@ -89,24 +79,7 @@ module.exports = {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=image/svg+xml&name=fonts/[name].[ext]'
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
             }
         ]
     }
 };
-
-
-if (NODE_ENV == 'production') {
-    module.exports.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true,
-                unsafe: true
-            }
-        })
-    );
-}

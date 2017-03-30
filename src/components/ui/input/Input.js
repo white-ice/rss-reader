@@ -2,14 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
 class Input extends Component {
-
-    static propTypes = {
-        value: PropTypes.string.isRequired,
-        onChange: PropTypes.func.isRequired,
-        divClasses: PropTypes.string,
-        error: PropTypes.string
-    };
-
     constructor(props) {
         super(props);
 
@@ -40,5 +32,12 @@ class Input extends Component {
         );
     }
 }
+
+Input.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    divClasses: PropTypes.string,
+    error: PropTypes.string
+};
 
 export default Input;

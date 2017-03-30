@@ -6,11 +6,6 @@ import {getRssData} from '../actions';
 import '../Dashboard.scss';
 
 class RssLenta extends Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired,
-        arrayRss: PropTypes.array.isRequired
-    };
-
     constructor(props) {
         super(props);
 
@@ -33,6 +28,11 @@ class RssLenta extends Component {
         );
     }
 }
+
+RssLenta.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    arrayRss: PropTypes.array.isRequired
+};
 
 function mapStateToProps(state) {
     return {};

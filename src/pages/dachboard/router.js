@@ -5,6 +5,6 @@ import Dashboard from './Dashboard';
 export default (
 
     <Route>
-        <Route component={ Dashboard } path={ Dashboard.path } />
+        <Route path="/" component={ Dashboard } />
     </Route>
 );

@@ -5,13 +5,7 @@ import Header from './components/header/Header';
 import NavMenu from './components/navigation/NavMenu';
 import Modal from './components/modal/Modal';
 
-export default class App extends Component {
-    static propTypes = {
-        children: PropTypes.any.isRequired
-    };
-
-    static path = '/';
-
+class App extends Component {
     render() {
         return (
             <div className="container-fluid">
@@ -28,3 +22,9 @@ export default class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    children: PropTypes.any.isRequired
+};
+
+export default App;

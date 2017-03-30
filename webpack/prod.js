@@ -43,6 +43,13 @@ module.exports = {
                 plugins: ['transform-runtime']
             },
             {
+                test: /\.scss$/,
+                loader: 'style' +
+                '!css?sourceMap' +
+                '!autoprefixer-loader?browsers=last 2 version' +
+                '!sass?sourceMap'
+            },
+            {
                 test: /\.less$/,
                 loader: 'style' +
                 '!css?sourceMap' +

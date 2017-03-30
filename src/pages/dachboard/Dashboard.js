@@ -7,28 +7,26 @@ import RssLenta from './components/RssLenta';
 import './Dashboard.scss';
 
 class Dashboard extends Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired
-    };
-
     constructor(props) {
         super(props);
     }
 
     render() {
         const arrayRss = LS.get('arrayRss');
-        console.log('Dashboard props', arrayRss);
 
         return(
             <div className="Dashboard">
                 <div className="row">
                     { !arrayRss ? <BtnImport /> : <RssLenta arrayRss={ arrayRss } /> }
-
                 </div>
             </div>
         );
     }
 }
+
+Dashboard.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
     return {

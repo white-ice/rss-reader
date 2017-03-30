@@ -5,11 +5,6 @@ import { closeModal } from './actions';
 import './Modal.scss';
 
 class Modal extends Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired,
-        modal: PropTypes.object.isRequired
-    };
-
     constructor(props) {
         super(props);
 
@@ -40,6 +35,11 @@ class Modal extends Component {
         );
     }
 }
+
+Modal.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    modal: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
     return {
