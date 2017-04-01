@@ -1,31 +1,6 @@
 .Dashboard {
   margin-top: 10%;
 }
-
-.rss {
-  &-item {
-    min-height: 10px;
-    padding: 5px 0;
-  }
-}
-
-.btn {
-  &-import {
-    cursor: pointer;
-    margin-top: 25px;
-    padding: 25px;
-    text-align: center;
-
-    &:hover {
-      background-color: #f8f8f8;
-    }
-
-    .glyphicon {
-      font-size: 52px;
-    }
-  }
-}
-
 .right {
   float: right;
 }

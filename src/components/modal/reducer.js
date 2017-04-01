@@ -9,7 +9,6 @@ const initialState = {
 function modalReducer(state = initialState, action) {
     switch (action.type) {
         case OPEN_MODAL:
-            console.log('Reducer State and Action open', state, action);
             return Object.assign({}, state, {
                 isOpen: true,
                 title: action.title,
