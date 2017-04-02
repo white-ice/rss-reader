@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-import { openModal } from '../../components/modal/index';
+import { openModal } from '../../../../components/modal/index';
 import ImporterModal from './importerModal';
-import './Rss.scss';
+import '../../Rss.scss';
 
 class RssImporter extends Component {
     constructor(props) {

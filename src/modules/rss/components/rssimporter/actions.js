@@ -1,4 +1,4 @@
-import { LS, delay } from '../../utils/index';
+import { LS, delay } from '../../../../utils/index';
 import $ from 'jquery';
 
 export const ADD_RSS = 'ADD_RSS';

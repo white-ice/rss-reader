@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import LS from '../../utils/Localstorage';
+import LS from '../../../../utils/Localstorage';
 
-import Input from '../../components/ui/input/Input';
-import {closeModal} from '../../components/modal/index';
-import './Rss.scss';
+import Input from '../../../../components/ui/input/Input';
+import {closeModal} from '../../../../components/modal/index';
+import '../../Rss.scss';
 
 class ImporterModal extends Component {
     constructor(props) {
